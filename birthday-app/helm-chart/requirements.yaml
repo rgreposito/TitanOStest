@@ -1,0 +1,5 @@
+dependencies:
+  - name: postgresql
+    version: "11.6.12"  # Use the latest stable version
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
