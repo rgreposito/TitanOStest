@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: birthday-app
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: birthday-app
+  template:
+    metadata:
+      labels:
+        app: birthday-app
+    spec:
+      containers:
+      - name: birthday-app
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - configMapRef:
+            name: birthday-app-config
+        - secretRef:
+            name: birthday-app-secret
