@@ -46,9 +46,25 @@ TitanOStest/birthday-app
 
 ---
 
-## System Design Diagram
+## System Architecture
 
-![System Design Diagram](./docs/system-design.png)
+```text
+┌─────────────────────────────────────────────────────────────────────┐
+│                            AWS Cloud                               │
+│                                                                     │
+│  ┌─────────────┐        ┌─────────────────┐        ┌─────────────┐  │
+│  │  ALB        │        │    EKS Cluster  │        │  RDS        │  │
+│  │ (Internet   │        │ ┌─────────────┐ │        │ PostgreSQL  │  │
+│  │  Facing)    │◄───────┼─┤  Birthday   │ │◄───────┤ (Multi-AZ)  │  │
+│  └─────────────┘        │ │  App Pods   │ │        └─────────────┘  │
+│                         │ └─────────────┘ │                         │
+│                         │ ┌─────────────┐ │                         │
+│                         │ │   PostgreSQL│ │                         │
+│                         │ │   Service   │ │                         │
+│                         │ └─────────────┘ │                         │
+│                         └─────────────────┘                         │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
 
 ### Components:
 1. **Application Layer**:
