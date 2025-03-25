@@ -217,18 +217,3 @@ minikube delete
 ## License
 
 This project is licensed under the Apache 2.0 License. See LICENSE for details.
-
-## System Diagram (ASCII Representation)
-
-```
-┌───────────────────────────────────────────────────────────────┐
-│                           AWS Cloud                           │
-│                                                               │
-│  ┌─────────────┐       ┌─────────────┐       ┌─────────────┐  │
-│  │    ALB      │       │    EKS      │       │    RDS      │  │
-│  │ (Load       │       │ (Kubernetes │       │ (PostgreSQL │  │
-│  │  Balancer)  │◄──────►  Cluster)   │◄──────►  Database)  │  │
-│  └─────────────┘       └─────────────┘       └─────────────┘  │
-│                                                               │
-└───────────────────────────────────────────────────────────────┘
-```
